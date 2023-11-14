@@ -1,0 +1,71 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <title>iBlog</title>
+</head>
+<body>
+     
+    <div class="landing-page">
+        <div class="navbar">
+
+
+            <div class="logo">
+                <h2>iBlog</h2>
+            </div>
+           
+        </div>
+
+        <div class="content">
+
+            <div class="content-left">
+                <div class="content-heading">
+                    <h1>Welcome</h1>
+                </div>
+                <form action="/signup" method="post">
+                    {% csrf_token %}
+                <div class="content-text">
+                    <label for="name">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Create username" autocomplete="off" required>
+
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" autocomplete="off" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Create password" autocomplete="off" required>
+                </div>
+
+                <div class="login">
+                    <button type="submit" class="login-btn">  Sign Up </button>
+                </div>
+                </form>
+
+                {% for message in messages %} 
+                    <strong>Message: </strong> {{message}}
+                    
+                    {% endfor %}
+                    <div class="getstarted">
+                        <p>Already a member?</p>
+                        <p class="fadeText"> <a href="login"> Log In </a></p>
+                    </div>
+                </div>
+                
+                    
+            </div>
+
+            <!-- <div class="content-right">
+              
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
